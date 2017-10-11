@@ -22,7 +22,7 @@ override_dh_clean: node_modules/.bin/yarn
 	yarn clean:cli clean:gui
 	rm -rf gui/elm-stuff/
 	rm -rf node_modules/ */node_modules/
-	rm -rf gui/dist/linux-unpacked/
+	rm -rf gui/dist/linux-unpacked/ icons/
 	rm -f cozy-desktop/gui/app.css
 	find -name package-lock.json -delete
 	find -name yarn-error.log -delete
