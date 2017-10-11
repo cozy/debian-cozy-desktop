@@ -1,0 +1,28 @@
+#! /usr/bin/make -f
+#export DH_VERBOSE = 1
+export PATH := $(PWD)/node_modules/.bin:$(PATH)
+
+%:
+	dh $@
+
+ifeq ("$(shell which yarn)","")
+node_modules/.bin/yarn:
+	npm install yarn
+else
+node_modules/.bin/yarn:
+	true
+endif
+
+build: node_modules/.bin/yarn
+	yarn --dev
+	yarn build
+	debian/generate-icons
+
+override_dh_clean: node_modules/.bin/yarn
+	yarn clean:cli clean:gui
+	rm -rf gui/elm-stuff/
+	rm -rf node_modules/ */node_modules/
+	rm -rf gui/dist/linux-unpacked/
+	rm -f cozy-desktop/gui/app.css
+	find -name package-lock.json -delete
+	find -name yarn-error.log -delete

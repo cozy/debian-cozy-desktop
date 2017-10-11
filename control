@@ -1,0 +1,19 @@
+Source: cozy-desktop
+Section: devel
+Priority: extra
+Maintainer: aeris <aeris@cozycloud.cc>
+Build-Depends: debhelper (>= 9), dh-exec,
+    libpython-stdlib, netbase, icnsutils, graphicsmagick, transifex-client,
+    imagemagick, nodejs (>= 8)
+Standards-Version: 4.1.1.1
+Homepage: https://github.com/labs/cozy-desktop/
+Vcs-Browser: https://github.com/labs/cozy-desktop/
+Vcs-Git: https://github.com/labs/cozy-desktop/
+
+Package: cozy-desktop
+Architecture: any
+Description: Cozy: Simple, Versatile, Yours
+ Cozy (https://cozy.io/) is a platform that brings all your web services
+ in the same private space.
+ .
+ This package installs Cozy Desktop client.

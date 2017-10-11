@@ -1,0 +1,7 @@
+*.log
+*.debhelper
+*.substvars
+*-stamp
+/cozy-desktop/
+/.debhelper/
+/files

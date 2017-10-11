@@ -1,0 +1,9 @@
+--- a/gui/package.json
++++ b/gui/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "cozy-desktop-gui",
++  "name": "cozy-desktop",
+   "productName": "Cozy Drive",
+   "private": true,
+   "version": "3.1.1",

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Cozy Drive
+Comment=File Synchronization Client for Cozy Cloud
+Exec=/usr/share/cozy/desktop/cozy-desktop %U
+Terminal=false
+Type=Application
+Icon=cozy-desktop
+Categories=Utility;

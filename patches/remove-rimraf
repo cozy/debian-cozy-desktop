@@ -1,0 +1,32 @@
+--- a/cli/package.json
++++ b/cli/package.json
+@@ -34,7 +34,7 @@
+     "bootstrap": "yarn docker:exec -- bootstrap-cozy-desktop.sh",
+     "bootstrap:remote": "babel-node ./dev/remote/generate-test-env.js",
+     "build": "babel --source-maps --out-dir lib/ src/",
+-    "clean": "rimraf lib/ tmp/",
++    "clean": "rm -rf lib/ tmp/",
+     "docker:exec": "docker exec -it cozy-desktop-stack",
+     "eslint": "./node_modules/.bin/eslint './src/**/*.js' './test/**/*.js'",
+     "fauxton": "babel-node ./src/bin/fauxton.js",
+--- a/package.json
++++ b/package.json
+@@ -4,15 +4,12 @@
+     "build": "yarn build:cli && yarn install:gui && yarn build:gui",
+     "build:cli": "cd cli && yarn build && cd .. && yarn uninstall:gui:cli",
+     "build:gui": "cd gui && yarn build && yarn dist",
+-    "clean:cli": "rimraf cli/lib/ cli/tmp/",
+-    "clean:gui": "rimraf gui/elm.js gui/app.css gui/dist/",
++    "clean:cli": "rm -rf cli/lib/ cli/tmp/",
++    "clean:gui": "rm -rf gui/elm.js gui/app.css gui/dist/",
+     "install:cli": "cd cli/ && yarn install && cd .. && yarn uninstall:gui:cli",
+     "install:gui": "cd gui/ && yarn install --check-files",
+     "postinstall": "yarn install:cli && yarn install:gui",
+     "prebuild": "yarn clean:cli && yarn clean:gui",
+-    "uninstall:gui:cli": "rimraf gui/node_modules/cozy-desktop"
+-  },
+-  "devDependencies": {
+-    "rimraf": "^2.6.1"
++    "uninstall:gui:cli": "rm -rf gui/node_modules/cozy-desktop"
+   }
+ }

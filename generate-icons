@@ -1,0 +1,7 @@
+#!/bin/bash
+for r in 16 24 32 48 64 96; do
+	res="${r}x${r}"
+	target="debian/cozy-desktop/usr/share/icons/hicolor/${res}/apps/"
+	mkdir -p "$target"
+	convert -resize "${r}x" "gui/images/icon.png" "${target}/cozy-desktop.png"
+done

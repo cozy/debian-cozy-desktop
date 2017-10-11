@@ -1,0 +1,3 @@
+#!/usr/bin/dh-exec
+gui/dist/linux-unpacked/* usr/share/cozy/desktop/
+debian/cozy-desktop.desktop usr/share/applications/
