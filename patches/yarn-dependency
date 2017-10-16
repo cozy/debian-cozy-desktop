@@ -6,6 +6,6 @@
      "uninstall:gui:cli": "rm -rf gui/node_modules/cozy-desktop"
 +  },
 +  "dependencies": {
-+    "yarn": "^1.2.0"
++    "yarn": "^1.2.1"
    }
  }
