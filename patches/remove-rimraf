@@ -1,17 +1,25 @@
 --- a/cli/package.json
 +++ b/cli/package.json
-@@ -34,7 +34,7 @@
-     "bootstrap": "yarn docker:exec -- bootstrap-cozy-desktop.sh",
+@@ -35,7 +35,7 @@
      "bootstrap:remote": "babel-node ./dev/remote/generate-test-env.js",
      "build": "babel --source-maps --out-dir lib/ src/",
+     "capture": "env-cmd .env.test babel-node ./dev/capture.js",
 -    "clean": "rimraf lib/ tmp/",
 +    "clean": "rm -rf lib/ tmp/",
-     "docker:exec": "docker exec -it cozy-desktop-stack",
      "eslint": "./node_modules/.bin/eslint './src/**/*.js' './test/**/*.js'",
      "fauxton": "babel-node ./src/bin/fauxton.js",
+     "flow": "flow status --quiet --show-all-errors",
+@@ -114,7 +114,6 @@
+     "node-uuid": "^1.4.8",
+     "nyc": "^11.0.1",
+     "pouchdb-server": "^2.3.4",
+-    "rimraf": "^2.6.1",
+     "should": "^11.2.1",
+     "should-sinon": "^0.0.5",
+     "sinon": "^2.3.1",
 --- a/package.json
 +++ b/package.json
-@@ -4,15 +4,12 @@
+@@ -4,17 +4,16 @@
      "build": "yarn build:cli && yarn install:gui && yarn build:gui",
      "build:cli": "cd cli && yarn build && cd .. && yarn uninstall:gui:cli",
      "build:gui": "cd gui && yarn build && yarn dist",
@@ -19,14 +27,35 @@
 -    "clean:gui": "rimraf gui/elm.js gui/app.css gui/dist/",
 +    "clean:cli": "rm -rf cli/lib/ cli/tmp/",
 +    "clean:gui": "rm -rf gui/elm.js gui/app.css gui/dist/",
+     "docker:exec": "docker exec -it cozy-desktop-stack",
      "install:cli": "cd cli/ && yarn install && cd .. && yarn uninstall:gui:cli",
      "install:gui": "cd gui/ && yarn install --check-files",
      "postinstall": "yarn install:cli && yarn install:gui",
      "prebuild": "yarn clean:cli && yarn clean:gui",
+     "test:setup": "yarn docker:exec /cozy-desktop/cli/test/setup.sh",
 -    "uninstall:gui:cli": "rimraf gui/node_modules/cozy-desktop"
--  },
--  "devDependencies": {
--    "rimraf": "^2.6.1"
 +    "uninstall:gui:cli": "rm -rf gui/node_modules/cozy-desktop"
+   },
+   "devDependencies": {
+-    "rimraf": "^2.6.1"
    }
  }
+--- a/gui/package.json
++++ b/gui/package.json
+@@ -78,7 +78,6 @@
+     "electron-builder": "19.22.1",
+     "elm": "^0.18.0",
+     "elm-upgrade": "^0.18.7",
+-    "rimraf": "^2.6.1",
+     "standard": "^10.0.2",
+     "stylus": "^0.54.5"
+   },
+@@ -88,7 +87,7 @@
+     "build:elm": "elm make src/elm/Main.elm --output elm.js",
+     "build:cli": "cd ../cli && yarn build",
+     "build:tx": "tx pull --all --minimum-perc=1 || true",
+-    "clean": "rimraf elm.js app.css* dist/",
++    "clean": "rm -rf elm.js app.css* dist/",
+     "dist": "cross-env DEBUG=electron-builder build --x64 --ia32",
+     "elm:upgrade": "yarn add --dev elm@latest elm-upgrade@latest && elm-upgrade",
+     "lint": "standard --verbose src/main/**.js main.js ports.js",

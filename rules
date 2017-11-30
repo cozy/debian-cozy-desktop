@@ -1,13 +1,14 @@
 #! /usr/bin/make -f
 #export DH_VERBOSE = 1
-export PATH := $(PWD)/node_modules/.bin:$(PATH)
+export PATH := $(PWD)/node_modules/.bin:$(HOME)/.npm/bin:$(PATH)
 
 %:
 	dh $@
 
 ifeq ("$(shell which yarn)","")
 node_modules/.bin/yarn:
-	npm install yarn
+	npm set prefix $(HOME)/.npm
+	npm install -g --no-save yarn
 else
 node_modules/.bin/yarn:
 	true

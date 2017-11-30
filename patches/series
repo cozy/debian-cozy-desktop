@@ -1,4 +1,3 @@
 remove-rimraf
 build-unpacked
 rename-binary
-yarn-dependency
